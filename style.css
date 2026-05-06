@@ -1,0 +1,18 @@
+body {margin:0; font-family: Arial, sans-serif;}
+header {
+    background: linear-gradient(to right, #006400, #00a86b);
+    color: white; text-align: center; padding: 60px 20px;
+}
+header h1 { font-size: 2.5em; margin-bottom: 10px;}
+header p { font-size: 1.2em; margin-bottom: 20px;}
+form { max-width: 300px; margin: 0 auto;}
+input { width: 100%; padding: 10px; margin: 5px 0;}
+button {width: 100%; padding: 12px; background: yellow; border: none; font-weight: bold; cursor: pointer;}
+section{ padding: 40px 20px; text-align: center;}
+.beneficios {display: flex; justify-content: space-around; flex-wrap: wrap;}
+.beneficio { width: 250px; margin: 10px;}
+.feedback textarea {width: 100%; height: 100px; padding: 10px;}
+.feedback button {margin-top: 10px;}
+.metricas { display: flex; justify-content: space-around; flex-wrap: wrap; background: #f5f5f5; }
+.box { width: 200px; margin: 20px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+.box h2 {margin: 0; font-size: 2em; color: #006400;}

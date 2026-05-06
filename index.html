@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!--Hero-->
+   <header>
+    <h1>Impulsa tus ingresos con nuestra herramienta</h1>
+    <p>Atrae más clientes y aumenta tu productividad con nuestros servicios</p>
+    <form id = "registroForms">
+        <input type="text" placeholder="Nombre" required>
+        <input type=" email" placeholder="Correo Electronico" required>
+        <button type=" submit">Registrate ahora</button>
+    </form>
+   </header> 
+
+   <!--Beneficios-->
+
+   <section>
+    <h2>Beneficios</h2>
+    <div class="beneficios">
+        <div class="beneficio">
+            <h3>Aumenta tus ventas</h3>
+            <p>Campañas efectivas y optimizadas.</p>
+        </div>
+        <div class="beneficio">
+            <h3> Atrae más Clientes</h3>
+            <p>Con estrategias simples y directas.</p>
+        </div>
+        <div class="bebficio">
+            <h3>Bono exclusivo</h3>
+            <p>Recibelo al registrarte.</p>
+        </div>
+    </div>
+    </section>
+
+    <!--Feedback-->
+    <section class="feedback">
+        <h2>¿Que tal te parecio la pagina?</h2>
+        <textarea id="comentario" placeholder="Escribe tus comentarios aqui..."></textarea>
+        <button onclick="enviarFeedback()">Enviar comentarios</button>
+    </section>
+
+    <!--Metricas-->
+    <section class="metricas">
+        <div class="box">
+            <h2 id="visitas">0</h2>
+            <p>Visitas</p>
+        </div>
+        <div class="box">
+            <h2 id="Registros">0</h2>
+            <p>Registros</p>
+        </div>
+        <div class="box">
+            <h2 id="Comentarios">0</h2>
+            <p>Comentarios</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
