@@ -14,17 +14,29 @@
     <div class="hero">
         <div class="informacion">
             <h4>ACA - PN</h4>
-            <h1>Impulsa tu productivida y la de tu empresa con nuestra herramienta HelpDesk</h1>
+            <h1>Impulsa tu Productividad y la de tu empresa con nuestra herramienta HelpDesk</h1>
             <p>Optimiza la operación de tu empresa con nuestro Service Desk inteligente, diseñado para resolver requerimientos e incidencias rápidamente y mantener a tus equipos enfocados en lo que realmente importa: producir resultados.</p>
         </div>
         
         <div class="forms">
             <form id="registroForms">
-                <input type="text" placeholder="Nombre" required>
-                <input type="email" placeholder="Correo Electronico" required>
-                <button type="submit">Registrate ahora</button>
+               <input 
+                   type="text" 
+                   name="nombre" 
+                   placeholder="Nombre" 
+                   aria-label="Nombre completo" 
+                   required
+                >
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Correo Electrónico" 
+                    aria-label="Correo electrónico" 
+                    required
+                >
+                <button type="submit">Regístrate ahora</button>
             </form>
-        </div>
+         </div>
     </div>
 </header> 
    <!--Beneficios-->
@@ -33,7 +45,7 @@
     <h2>Beneficios</h2>
     <div class="beneficios">
         <div class="beneficio">
-            <h3>Aumenta tu Productividad y los de tus empleados</h3>
+            <h3>Aumenta tu Productividad y los de tus colaboradores</h3>
             <p>Optimice la atención interna con nuestra solución HelpDesk, diseñada para que su equipo resuelva incidencias y solicitudes desde cualquier ubicación, eliminando la presencialidad innecesaria.</p>
         </div>
         <div class="beneficio">
@@ -41,15 +53,16 @@
             <p>Potencie el desempeño de su equipo con nuestra Inteligencia Artificial, la cual optimiza la gestión de solicitudes mediante sugerencias personalizadas y precisas.</p>
         </div>
         <div class="beneficio">
-            <h3>Seguridad es nuestra prioridad</h3>
-            <p>Implementamos medidas de seguridad avanzadas para proteger sus datos y garantizar la privacidad de su información.</p>
+            <h3>Descuento y bonos de fidelización</h3>
+            <p>Por comprar y renovar nuestros servicios, obtén descuentos exclusivos y bonos de fidelización.</p>
         </div>
+    
     </div>
     </section>
 
     <!--Feedback-->
     <section class="feedback">
-        <h2>¿Que te parecieron nuestros servicios?</h2>
+        <h2>¿Qué te parecieron nuestros servicios?</h2>
         <textarea id="comentario" placeholder="Escribe tus comentarios aqui..."></textarea>
         <button onclick="enviarFeedback()">Enviar comentarios</button>
     </section>
@@ -65,19 +78,27 @@
 
         <div class="box">
             <i class="fa-solid fa-address-card icon-metrica"></i>
-            <h2 id="Registros">0</h2>
+            <h2 id="registros">0</h2>
             <p>Registros</p>
         </div>
 
         <div class="box">
             <i class="fa-solid fa-comment-dots icon-metrica"></i>
-            <h2 id="Comentarios">0</h2>
+            <h2 id="comentarios">0</h2>
             <p>Comentarios</p>
         </div>
 
     </section>
+    <section class="section">
+        <h2>Comentarios de nuestros usuarios</h2>
+        <div id="listaComentarios" class="lista-comentarios">
+
+        </div>
+    </section>
+
+    <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-database-compat.js"></script>
 
     <script src="script.js"></script>
-    
 </body>
 </html>

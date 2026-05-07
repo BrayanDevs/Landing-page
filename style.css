@@ -208,3 +208,39 @@ section h2 {
     transform: scale(1.1) rotate(5deg);
     color: green;
 }
+.lista-comentarios {
+    width: 94%;
+    margin: 40px auto;
+    display: flex;
+    background-color: white;
+    border-radius: 15px;
+    flex-direction: column; /* Comentarios uno debajo de otro */
+    gap: 20px;
+}
+
+.targeta-comentario {
+    background-color: #ffffff;
+    border: 2px solid #4A90E2;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column; /* Alinea cabecera arriba y texto abajo */
+    gap: 10px;
+}
+.user-info {
+    flex-direction: row;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 5px;
+}
+.user-info strong {
+    color: #333;
+    display: block;
+    font-size: 1.1em;
+}
+.text-comment {
+    font-style: italic;
+    color: #444;
+    margin: 5px 0;
+}
