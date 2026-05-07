@@ -63,8 +63,16 @@
     <!--Feedback-->
     <section class="feedback">
         <h2>¿Qué te parecieron nuestros servicios?</h2>
-        <textarea id="comentario" placeholder="Escribe tus comentarios aqui..."></textarea>
-        <button onclick="enviarFeedback()">Enviar comentarios</button>
+        <div class="feedback-form">
+            <div class="fila-superior">
+                <input type="text" id="feedback-nombre" placeholder="Tu Nombre" required>
+                <input type ="email" id="feedback-correo" placeholder="Tu correo Electronico" required>
+                <button onclick="enviarFeedback()" class="btn-enviar">Enviar comentarios</button>
+            </div>
+
+            <textarea id="comentario" placeholder="Escribe tus comentarios aqui..."></textarea>
+
+        </div>
     </section>
 
     <!--Metricas-->
