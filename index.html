@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!--Hero-->
-   <header>
+ <header>
     <div class="hero">
         <div class="informacion">
             <h4>ACA - PN</h4>
@@ -18,54 +19,62 @@
         </div>
         
         <div class="forms">
-            <form id=" registroForms">
+            <form id="registroForms">
                 <input type="text" placeholder="Nombre" required>
                 <input type="email" placeholder="Correo Electronico" required>
                 <button type="submit">Registrate ahora</button>
             </form>
         </div>
-   </header> 
+    </div>
+</header> 
    <!--Beneficios-->
 
-   <section>
+   <section class="section">
     <h2>Beneficios</h2>
     <div class="beneficios">
         <div class="beneficio">
-            <h3>Aumenta tus ventas</h3>
-            <p>Campañas efectivas y optimizadas.</p>
+            <h3>Aumenta tu Productividad y los de tus empleados</h3>
+            <p>Optimice la atención interna con nuestra solución HelpDesk, diseñada para que su equipo resuelva incidencias y solicitudes desde cualquier ubicación, eliminando la presencialidad innecesaria.</p>
         </div>
         <div class="beneficio">
-            <h3> Atrae más Clientes</h3>
-            <p>Con estrategias simples y directas.</p>
+            <h3> Ayuda de la inteligencia artificial</h3>
+            <p>Potencie el desempeño de su equipo con nuestra Inteligencia Artificial, la cual optimiza la gestión de solicitudes mediante sugerencias personalizadas y precisas.</p>
         </div>
-        <div class="bebficio">
-            <h3>Bono exclusivo</h3>
-            <p>Recibelo al registrarte.</p>
+        <div class="beneficio">
+            <h3>Seguridad es nuestra prioridad</h3>
+            <p>Implementamos medidas de seguridad avanzadas para proteger sus datos y garantizar la privacidad de su información.</p>
         </div>
     </div>
     </section>
 
     <!--Feedback-->
     <section class="feedback">
-        <h2>¿Que tal te parecio la pagina?</h2>
+        <h2>¿Que te parecieron nuestros servicios?</h2>
         <textarea id="comentario" placeholder="Escribe tus comentarios aqui..."></textarea>
         <button onclick="enviarFeedback()">Enviar comentarios</button>
     </section>
 
     <!--Metricas-->
     <section class="metricas">
+
         <div class="box">
+            <i class="fa-solid fa-eye icon-metrica"></i>
             <h2 id="visitas">0</h2>
             <p>Visitas</p>
         </div>
+
         <div class="box">
+            <i class="fa-solid fa-address-card icon-metrica"></i>
             <h2 id="Registros">0</h2>
             <p>Registros</p>
         </div>
+
         <div class="box">
+            <i class="fa-solid fa-comment-dots icon-metrica"></i>
             <h2 id="Comentarios">0</h2>
             <p>Comentarios</p>
         </div>
+
     </section>
 
     <script src="script.js"></script>
