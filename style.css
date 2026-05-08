@@ -193,51 +193,72 @@ section h2 {
 }
 .lista-comentarios {
     width: 94%;
+    max-width: 1000px; /* Limitamos el ancho para que no se vea tan estirado en pantallas grandes */
     margin: 40px auto;
-    background-color: #ffffff;
+    background-color: #f1f1f1; /* Un tono ligeramente distinto al fondo para dar profundidad */
     border: 2px solid #4A90E2;
     border-radius: 25px;
-    padding: 50px 20px;
+    padding: 40px 20px;
     box-sizing: border-box;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
     display: flex;
     flex-direction: column;
-    align-items: left;
-    gap: 20px;
-    min-height:  200px;
-    overflow: auto;
+    align-items: stretch; /* Estira las tarjetas para que ocupen el mismo ancho */
+    gap: 25px;
+    min-height: 200px;
 }
 
 .targeta-comentario {
     background-color: #ffffff;
-    border: 2px solid #4A90E2;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: none; /* Quitamos el borde azul fuerte para que sea más elegante */
+    border-left: 6px solid #4A90E2; /* Mantenemos el azul solo como un acento lateral */
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
-    flex-direction: column; /* Alinea cabecera arriba y texto abajo */
-    gap: 10px;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease;
 }
+
+.targeta-comentario:hover {
+    transform: scale(1.01); /* Efecto sutil al pasar el mouse */
+}
+
 .user-info {
     display: flex;
+    flex-wrap: wrap; /* Para que en celulares la fecha baje solita */
     flex-direction: row;
-    font-size: 0.9em;
-    color: #555;
-    align-items: center;
-    gap: 15px;
+    font-size: 0.95rem;
+    color: #666;
+    align-items: baseline;
+    gap: 10px;
 }
+
 .user-info strong {
-    color: #333;
-    font-size: 1.2em;
+    color: #006400; /* Color verde para resaltar el nombre */
+    font-size: 1.15rem;
 }
+
+.user-info span {
+    color: #4A90E2; /* El correo en azul */
+    font-weight: 500;
+}
+
+.user-info small {
+    color: #999;
+    margin-left: auto; /* Empuja la fecha a la derecha si hay espacio */
+}
+
 .text-comment {
-    font-style: italic;
-    color: #444;
-    margin:  0;
+    font-style: normal; /* Normal es más legible para comentarios largos */
+    color: #333;
+    margin: 0;
     text-align: left;
-    padding-top: 10px;
-    border-top:  1px solid #eee;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd; /* Línea discontinua para separar */
+    line-height: 1.5;
 }
 .feedback {
     padding: 60px 20px;
@@ -325,4 +346,25 @@ section h2 {
     .input-group {
         grid-template-columns: 1fr;
     }
+}
+.beneficio-icon {
+    font-size: 3rem; /* Tamaño grande para que destaque */
+    color: #006400;  /* El color verde que usas en el Hero */
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Efecto opcional: Que el icono cambie de color al pasar el mouse por la caja */
+.beneficio:hover .beneficio-icon {
+    color: #ffffff; /* Cambia a blanco cuando el fondo de la caja se vuelve verde */
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* Ajuste adicional para que el contenido de la caja se alinee bien */
+.beneficio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }

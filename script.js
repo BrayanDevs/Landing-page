@@ -109,27 +109,24 @@ database.ref('lista_comentarios').on('value', (snapshot) => {
     const listaContenedor = document.getElementById('listaComentarios');
     if (!listaContenedor) return;
     
-    listaContenedor.innerHTML = ""; // Limpiar lista
+    listaContenedor.innerHTML = ""; 
 
     snapshot.forEach((childSnapshot) => {
         const data = childSnapshot.val();
-        
-        // Convertir la fecha (timestamp) a un formato legible
         const fechaLegible = data.fecha ? new Date(data.fecha).toLocaleString() : "Fecha no disponible";
 
         const div = document.createElement('div');
-        div.classList.add('comentario-item'); 
         
-        // Estructura solicitada: Nombre - Correo | Fecha y abajo el comentario
+        // CAMBIO AQUÍ: Debe ser 'targeta-comentario' para que coincida con tu CSS
+        div.classList.add('targeta-comentario'); 
+        
         div.innerHTML = `
-            <div class="comentario-header">
-                <strong>${data.nombre}</strong> - <span>${data.correo}</span>
-                <small style="display: block; color: #888; font-size: 0.8rem;">Publicado el: ${fechaLegible}</small>
+            <div class="user-info">
+                <strong>${data.nombre}</strong>
+                <span>${data.correo}</span>
+                <small>${fechaLegible}</small>
             </div>
-            <div class="comentario-body" style="margin-top: 8px; color: #444;">
-                <p>${data.mensaje}</p>
-            </div>
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+            <p class="text-comment">${data.mensaje}</p>
         `;
         
         listaContenedor.prepend(div); 
