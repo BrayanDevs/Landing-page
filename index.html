@@ -62,18 +62,34 @@
 
     <!--Feedback-->
     <section class="feedback">
+    <div class="feedback-container">
         <h2>¿Qué te parecieron nuestros servicios?</h2>
-        <div class="feedback-form">
-            <div class="fila-superior">
-                <input type="text" id="feedback-nombre" placeholder="Tu Nombre" required>
-                <input type ="email" id="feedback-correo" placeholder="Tu correo Electronico" required>
-                <button onclick="enviarFeedback()" class="btn-enviar">Enviar comentarios</button>
+        <p class="subtitle">Tu opinión nos ayuda a mejorar la experiencia de soporte.</p>
+
+        <form id="feedbackForm" class="feedback-form">
+            <div class="input-group">
+                <div class="field">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="feedback-nombre" placeholder="Tu nombre" required>
+                </div>
+
+                <div class="field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <!-- ID: feedback-correo -->
+                    <input type="email" id="feedback-correo" placeholder="Tu correo electrónico" required>
+                </div>
             </div>
-
-            <textarea id="comentario" placeholder="Escribe tus comentarios aqui..."></textarea>
-
-        </div>
-    </section>
+            <div class="textarea-field">
+                <!-- ID CAMBIADO: 'feedback-mensaje' para evitar conflicto con el contador 'comentarios' -->
+                <textarea id="feedback-mensaje" placeholder="Escribe tus comentarios aquí..." required></textarea>
+            </div>
+            <button type="submit" class="btn-enviar">
+                <span>Enviar Comentarios</span>
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+</section>
 
     <!--Metricas-->
     <section class="metricas">

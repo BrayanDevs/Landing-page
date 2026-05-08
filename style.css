@@ -117,21 +117,7 @@ section h2 {
     line-height: 1.5;
 }
 
-.feedback {
-    width: 94%;
-    margin: 40px auto;
-    background-color: #ffffff;
-    border: 2px solid #4A90E2;
-    border-radius: 25px;
-    padding: 50px 20px;
-    box-sizing: border-box;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
 
 #comentario {
     width: 100%;
@@ -252,4 +238,91 @@ section h2 {
     text-align: left;
     padding-top: 10px;
     border-top:  1px solid #eee;
+}
+.feedback {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    display:flex;
+    justify-content: center;
+}
+.feedback-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+.feedback h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+.feedback-form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.field, .textarea-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.field i {
+    position: absolute;
+    left: 15px;
+    color: #007bff;
+}
+.field input, .textarea-field textarea {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+.textarea-field textarea {
+    padding-left: 15px;
+    height: 120px;
+    resize: none;
+}
+.field input:focus, .textarea-field textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+.btn-enviar {
+    margin-top: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s transform 0.2s;
+}
+.btn-enviar:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+.btn-enviar:active {
+    transform: translateY(0);
+}
+@media (max-width: 600px) {
+    .input-group {
+        grid-template-columns: 1fr;
+    }
 }

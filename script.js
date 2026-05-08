@@ -62,51 +62,76 @@ database.ref('metricas/registros').on('value', (snapshot) => {
 // ==========================================
 // LÓGICA DE COMENTARIOS (Feedback)
 // ==========================================
-function enviarFeedback(){
-    const cajaTexto = document.getElementById('comentario');
-    const mensaje = cajaTexto.value;
 
-    const nombreUsuario = document.querySelector('input[name="nombre"]').value || "Anónimo";
-    const correoUsuario = document.querySelector('input[name="email"]').value || "Sin correo";
+const feedbackForm = document.getElementById('feedbackForm');
 
-    if(mensaje.trim() !== ""){
-        const nuevoComentarioRef = database.ref('detalles_comentarios').push();
+if (feedbackForm) {
+    feedbackForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Detiene el refresco de pantalla
+
+        const nombre = document.getElementById('feedback-nombre').value;
+        const correo = document.getElementById('feedback-correo').value;
+        const mensaje = document.getElementById('feedback-mensaje').value;
+
+        // 1. Guardar en la base de datos (Colección independiente)
+        const nuevoComentarioRef = database.ref('lista_comentarios').push();
+
         nuevoComentarioRef.set({
-            nombre: nombreUsuario,
-            correo: correoUsuario,
-            comentario: mensaje,
-            fecha: Date.now()
+            nombre: nombre,
+            correo: correo,
+            mensaje: mensaje,
+            fecha: firebase.database.ServerValue.TIMESTAMP
+        }).then(() => {
+            // 2. Aumentar el contador de la métrica (id="comentarios" en tu sección de métricas)
+            return database.ref('metricas/comentarios').transaction((valorActual) => {
+                return (valorActual || 0) + 1;
+            });
+        }).then(() => {
+            alert("¡Gracias por tu comentario!");
+            feedbackForm.reset(); // Limpia el formulario
+        }).catch((error) => {
+            console.error("Error al enviar:", error);
         });
-
-        database.ref('metricas/comentarios').transaction((valorActual) => {
-            return (valorActual || 0) + 1;
-        });
-
-        alert("Gracias por el comentario");
-        cajaTexto.value = "";
-    } else {
-        alert("Por favor, escribe un comentario antes de enviar.");
-    }
+    });
 }
 
-database.ref('detalles_comentarios').on('value', (snapshot) => {
-    const contenedor = document.getElementById('listaComentarios');
-    contenedor.innerHTML = "";
+// 3. Escuchar el CONTADOR de métricas (id="comentarios" en el HTML de métricas)
+database.ref('metricas/comentarios').on('value', (snapshot) => {
+    const total = snapshot.val() || 0;
+    const elementoContador = document.getElementById('comentarios');
+    if (elementoContador) {
+        elementoContador.innerText = total;
+    }
+});
+
+// 4. Escuchar la LISTA para mostrar los comentarios abajo
+database.ref('lista_comentarios').on('value', (snapshot) => {
+    const listaContenedor = document.getElementById('listaComentarios');
+    if (!listaContenedor) return;
+    
+    listaContenedor.innerHTML = ""; // Limpiar lista
 
     snapshot.forEach((childSnapshot) => {
         const data = childSnapshot.val();
         
-    
+        // Convertir la fecha (timestamp) a un formato legible
+        const fechaLegible = data.fecha ? new Date(data.fecha).toLocaleString() : "Fecha no disponible";
+
         const div = document.createElement('div');
-        div.classList.add('tarjeta-comentario');
+        div.classList.add('comentario-item'); 
+        
+        // Estructura solicitada: Nombre - Correo | Fecha y abajo el comentario
         div.innerHTML = `
-            <div class="user-info">
-                <strong>${data.nombre}</strong> 
-                <span>Usuario: ${data.correo}</span>
+            <div class="comentario-header">
+                <strong>${data.nombre}</strong> - <span>${data.correo}</span>
+                <small style="display: block; color: #888; font-size: 0.8rem;">Publicado el: ${fechaLegible}</small>
             </div>
-            <p class="text-comment">${data.comentario}</p>
-            <hr>
+            <div class="comentario-body" style="margin-top: 8px; color: #444;">
+                <p>${data.mensaje}</p>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
         `;
-        contenedor.prepend(div);
+        
+        listaContenedor.prepend(div); 
     });
 });
