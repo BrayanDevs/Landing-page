@@ -113,17 +113,18 @@ database.ref('lista_comentarios').on('value', (snapshot) => {
 
     snapshot.forEach((childSnapshot) => {
         const data = childSnapshot.val();
-        const fechaLegible = data.fecha ? new Date(data.fecha).toLocaleString() : "Fecha no disponible";
+        const fechaLegible = data.fecha ? new Date(data.fecha).toLocaleString() : "";
+
+        // AQUÍ APLICAMOS LA FUNCIÓN:
+        const correoPrivado = ofuscarEmail(data.correo);
 
         const div = document.createElement('div');
-        
-        // CAMBIO AQUÍ: Debe ser 'targeta-comentario' para que coincida con tu CSS
-        div.classList.add('targeta-comentario'); 
+        div.className = 'targeta-comentario'; 
         
         div.innerHTML = `
             <div class="user-info">
                 <strong>${data.nombre}</strong>
-                <span>${data.correo}</span>
+                <span>${correoPrivado}</span> <!-- Ahora se verá privado -->
                 <small>${fechaLegible}</small>
             </div>
             <p class="text-comment">${data.mensaje}</p>
@@ -132,3 +133,20 @@ database.ref('lista_comentarios').on('value', (snapshot) => {
         listaContenedor.prepend(div); 
     });
 });
+function ofuscarEmail(email) {
+    if (!email || !email.includes("@")) return email;
+    
+    const [usuario, dominio] = email.split("@");
+    
+    // Si el nombre es muy corto, mostramos menos caracteres
+    if (usuario.length <= 2) {
+        return usuario.charAt(0) + "***@" + dominio;
+    }
+    
+    // Mostramos la primera y última letra del nombre, y el resto con asteriscos
+    const primeraLetra = usuario.charAt(0);
+    const ultimaLetra = usuario.charAt(usuario.length - 1);
+    const asteriscos = "*".repeat(usuario.length - 2);
+    
+    return `${primeraLetra}${asteriscos}${ultimaLetra}@${dominio}`;
+}
