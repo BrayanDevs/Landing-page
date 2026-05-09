@@ -104,6 +104,24 @@ database.ref('metricas/comentarios').on('value', (snapshot) => {
     }
 });
 
+function ofuscarEmail(email) {
+    if (!email || !email.includes("@")) return email;
+    
+    const [usuario, dominio] = email.split("@");
+    
+    // Si el nombre es muy corto, mostramos menos caracteres
+    if (usuario.length <= 2) {
+        return usuario.charAt(0) + "***@" + dominio;
+    }
+    
+    // Mostramos la primera y última letra del nombre, y el resto con asteriscos
+    const primeraLetra = usuario.charAt(0);
+    const ultimaLetra = usuario.charAt(usuario.length - 1);
+    const asteriscos = "*".repeat(usuario.length - 2);
+    
+    return `${primeraLetra}${asteriscos}${ultimaLetra}@${dominio}`;
+}
+
 // 4. Escuchar la LISTA para mostrar los comentarios abajo
 database.ref('lista_comentarios').on('value', (snapshot) => {
     const listaContenedor = document.getElementById('listaComentarios');
@@ -133,20 +151,4 @@ database.ref('lista_comentarios').on('value', (snapshot) => {
         listaContenedor.prepend(div); 
     });
 });
-function ofuscarEmail(email) {
-    if (!email || !email.includes("@")) return email;
-    
-    const [usuario, dominio] = email.split("@");
-    
-    // Si el nombre es muy corto, mostramos menos caracteres
-    if (usuario.length <= 2) {
-        return usuario.charAt(0) + "***@" + dominio;
-    }
-    
-    // Mostramos la primera y última letra del nombre, y el resto con asteriscos
-    const primeraLetra = usuario.charAt(0);
-    const ultimaLetra = usuario.charAt(usuario.length - 1);
-    const asteriscos = "*".repeat(usuario.length - 2);
-    
-    return `${primeraLetra}${asteriscos}${ultimaLetra}@${dominio}`;
-}
+
