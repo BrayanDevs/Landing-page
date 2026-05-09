@@ -193,20 +193,35 @@ section h2 {
 }
 .lista-comentarios {
     width: 94%;
-    max-width: 1000px; /* Limitamos el ancho para que no se vea tan estirado en pantallas grandes */
+    max-width: 1000px;
     margin: 40px auto;
-    background-color: #f1f1f1; /* Un tono ligeramente distinto al fondo para dar profundidad */
+    background-color: #f1f1f1;
     border: 2px solid #4A90E2;
     border-radius: 25px;
-    padding: 40px 20px;
+    padding: 30px 20px; /* Ajustado el padding para el scroll */
     box-sizing: border-box;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Estira las tarjetas para que ocupen el mismo ancho */
+    align-items: stretch;
     gap: 25px;
-    min-height: 200px;
+    
+    /* CAMBIOS CLAVE AQUÍ: */
+    max-height: 330px;    /* El cajón no medirá más de 600px */
+    overflow-y: auto;     /* Activa el scroll vertical si hay muchos comentarios */
+    scrollbar-width: thin; /* Para navegadores como Firefox */
+}
+.lista-comentarios::-webkit-scrollbar {
+    width: 10px;
+}
+.lista-comentarios::-webkit-scrollbar-thumb {
+    background-color: #4A90E2; /* Color azul para combinar con el borde */
+    border-radius: 20px;
+    border: 3px solid #f1f1f1; /* Crea un efecto de separación */
+}
+.lista-comentarios::-webkit-scrollbar-thumb:hover {
+    background-color: #006400; /* Verde al pasar el mouse */
 }
 
 .targeta-comentario {
